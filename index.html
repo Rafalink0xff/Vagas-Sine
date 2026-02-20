@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Vagas - SINE</title>
+    <style>
+        :root {
+            --azul-sine: #004488;
+            --amarelo-sine: #FFD100;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; padding: 0; background-color: #f4f7f6; color: #333;
+        }
+        header {
+            background-color: var(--azul-sine); color: white;
+            padding: 20px; text-align: center;
+            border-bottom: 5px solid var(--amarelo-sine);
+        }
+        .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        .busca {
+            width: 100%; padding: 12px; font-size: 16px;
+            border: 2px solid #ccc; border-radius: 8px;
+            margin-bottom: 20px; box-sizing: border-box;
+        }
+        .vaga-card {
+            background: white; padding: 15px; margin-bottom: 15px;
+            border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--azul-sine);
+        }
+        .vaga-card h3 { margin: 0 0 10px 0; color: var(--azul-sine); }
+        .empresa { font-weight: bold; color: #555; font-size: 14px; }
+        .detalhes { display: flex; justify-content: space-between; margin-top: 10px; font-size: 14px;}
+        .tag-vagas { background-color: #e0f2f1; color: #006655; padding: 4px 8px; border-radius: 4px; font-weight: bold;}
+        .tag-pcd { background-color: #4CAF50; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px; margin-left: 10px;}
+        .data { color: #d32f2f; font-weight: bold; }
+        .footer { text-align: center; margin-top: 30px; font-size: 12px; color: #777; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Painel de Vagas</h1>
+        <p>Atualizado diariamente. Procure sua oportunidade abaixo:</p>
+    </header>
+
+    <div class="container">
+        <input type="text" id="inputBusca" class="busca" placeholder="🔍 Buscar por cargo ou empresa...">
+        <div id="lista-vagas">Carregando vagas...</div>
+        <div class="footer" id="data-atualizacao"></div>
+    </div>
+
+    <script>
+        let vagasData = [];
+
+        // Busca o JSON gerado pelo Python
+        fetch('vagas.json')
+            .then(response => response.json())
+            .then(data => {
+                vagasData = data;
+                renderizarVagas(vagasData);
+                document.getElementById('data-atualizacao').innerText = "Última atualização do sistema: " + new Date().toLocaleDateString('pt-BR');
+            })
+            .catch(error => {
+                document.getElementById('lista-vagas').innerHTML = "<p style='color:red;'>Erro ao carregar as vagas. Tente novamente mais tarde.</p>";
+            });
+
+        // Função para desenhar os cartões na tela
+        function renderizarVagas(vagas) {
+            const container = document.getElementById('lista-vagas');
+            container.innerHTML = '';
+
+            if (vagas.length === 0) {
+                container.innerHTML = '<p>Nenhuma vaga encontrada para esta busca.</p>';
+                return;
+            }
+
+            vagas.forEach(vaga => {
+                const tagPcd = vaga.pcd ? `<span class="tag-pcd">♿ VAGA PCD</span>` : '';
+                
+                const card = `
+                    <div class="vaga-card">
+                        <h3>${vaga.cargo} ${tagPcd}</h3>
+                        <div class="empresa">🏢 ${vaga.empresa}</div>
+                        <div class="detalhes">
+                            <span class="tag-vagas">👥 ${vaga.qtd} Vaga(s)</span>
+                            <span>⏳ Válido até: <span class="data">${vaga.vencimento}</span></span>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
+
+        // Sistema de busca em tempo real
+        document.getElementById('inputBusca').addEventListener('input', function(e) {
+            const termo = e.target.value.toLowerCase();
+            const vagasFiltradas = vagasData.filter(vaga => 
+                vaga.cargo.toLowerCase().includes(termo) || 
+                vaga.empresa.toLowerCase().includes(termo)
+            );
+            renderizarVagas(vagasFiltradas);
+        });
+    </script>
+</body>
+</html>
