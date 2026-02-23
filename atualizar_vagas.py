@@ -1,10 +1,10 @@
 import csv
 import json
 from datetime import datetime
-import os
 
 def processar_vagas():
-    arquivo_entrada = "ConsultaVagasPorCriterios.csv" # Mude para o nome exato do seu arquivo
+    # Agora ele vai ler o CSV que você salvou no Excel
+    arquivo_entrada = "vagas.csv" 
     arquivo_saida = "vagas.json"
     
     vagas_processadas = []
@@ -12,62 +12,70 @@ def processar_vagas():
     
     print(f"Lendo o arquivo: {arquivo_entrada}...")
 
-    # Usando latin-1 ou cp1252 porque sistemas do governo costumam usar esse padrão no Windows
     try:
-        f = open(arquivo_entrada, mode='r', encoding='utf-8')
-        f.read()
-        f.seek(0)
-    except UnicodeDecodeError:
-        f = open(arquivo_entrada, mode='r', encoding='latin-1')
-
-    leitor = csv.reader(f)
-    
-    for linha in leitor:
-        # Pula as linhas de cabeçalho (que têm poucas colunas)
-        if len(linha) < 15:
-            continue
-            
-        # Pula a linha que contém os nomes das colunas
-        if "Código" in linha[2] or "Ocupação" in linha[3]:
-            continue
-
+        # Abre o arquivo tentando UTF-8 primeiro
         try:
-            # Mapeamento baseado no arquivo do IMO que você enviou
-            cargo = linha[3].strip().upper()
-            empresa = linha[6].strip().upper()
-            status = linha[10].strip().lower()
-            qtd_vagas = linha[11].strip()
-            flexibilizada = linha[13].strip().lower() # Se "Sim", geralmente aceita PCD
-            data_vencimento_str = linha[14].strip()
+            f = open(arquivo_entrada, mode='r', encoding='utf-8')
+            primeira_linha = f.readline()
+            f.seek(0)
+        except UnicodeDecodeError:
+            f = open(arquivo_entrada, mode='r', encoding='latin-1')
+            primeira_linha = f.readline()
+            f.seek(0)
 
-            # Só processa se a vaga estiver 'aberta'
-            if status != 'aberta':
+        # Detecta automaticamente se o Excel brasileiro salvou com ponto-e-vírgula ou vírgula
+        delimitador = ';' if ';' in primeira_linha else ','
+        leitor = csv.reader(f, delimiter=delimitador)
+        
+        for linha in leitor:
+            # Pula cabeçalhos ou linhas curtas
+            if len(linha) < 15:
+                continue
+                
+            # Pula a linha que contém os nomes das colunas
+            if "Código" in str(linha[2]) or "Ocupação" in str(linha[3]):
                 continue
 
-            # Verifica se a vaga está no prazo
-            data_vencimento = datetime.strptime(data_vencimento_str, "%d/%m/%Y").date()
-            if data_vencimento >= hoje:
-                vagas_processadas.append({
-                    "cargo": cargo,
-                    "empresa": empresa,
-                    "qtd": qtd_vagas,
-                    "vencimento": data_vencimento_str,
-                    "pcd": True if flexibilizada == 'sim' else False
-                })
-        except Exception as e:
-            # Ignora linhas em branco ou mal formatadas no final do arquivo
-            continue
+            try:
+                cargo = linha[3].strip().upper()
+                empresa = linha[6].strip().upper()
+                status = linha[10].strip().lower()
+                qtd_vagas = linha[11].strip()
+                flexibilizada = linha[13].strip().lower()
+                data_vencimento_str = linha[14].strip()
 
-    f.close()
+                # Só processa se a vaga estiver 'aberta'
+                if status != 'aberta':
+                    continue
 
-    # Ordena as vagas em ordem alfabética pelo Cargo
-    vagas_processadas = sorted(vagas_processadas, key=lambda x: x['cargo'])
+                # Trava de Segurança: Ignora vagas vencidas
+                data_vencimento = datetime.strptime(data_vencimento_str, "%d/%m/%Y").date()
+                if data_vencimento >= hoje:
+                    vagas_processadas.append({
+                        "cargo": cargo,
+                        "empresa": empresa,
+                        "qtd": qtd_vagas,
+                        "vencimento": data_vencimento_str,
+                        "pcd": True if flexibilizada == 'sim' else False
+                    })
+            except Exception as e:
+                # Ignora linhas em branco ou mal formatadas no final do relatório
+                continue
 
-    # Salva no formato JSON para o site ler
-    with open(arquivo_saida, 'w', encoding='utf-8') as jf:
-        json.dump(vagas_processadas, jf, ensure_ascii=False, indent=4)
+        f.close()
 
-    print(f"✅ Sucesso! {len(vagas_processadas)} vagas válidas foram salvas no '{arquivo_saida}'.")
+        # Ordena em ordem alfabética para ficar organizado no celular do candidato
+        vagas_processadas = sorted(vagas_processadas, key=lambda x: x['cargo'])
+
+        # Cria o arquivo JSON
+        with open(arquivo_saida, 'w', encoding='utf-8') as jf:
+            json.dump(vagas_processadas, jf, ensure_ascii=False, indent=4)
+
+        print(f"✅ Sucesso! {len(vagas_processadas)} vagas ATIVAS prontas para o GitHub.")
+
+    except FileNotFoundError:
+        print(f"❌ ERRO: O arquivo '{arquivo_entrada}' não foi encontrado.")
+        print("Lembre-se de abrir o .xls do MTE no Excel e 'Salvar Como -> CSV'.")
 
 if __name__ == "__main__":
     processar_vagas()

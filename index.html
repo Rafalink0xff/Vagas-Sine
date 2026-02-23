@@ -3,93 +3,321 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Vagas - SINE</title>
+    <title>SINE - Quadro de Vagas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* ==========================================
+           VARIÁVEIS DE CORES
+           ========================================== */
         :root {
-            --azul-sine: #004488;
-            --amarelo-sine: #FFD100;
+            --azul-principal: #004488;
+            --azul-claro: #f0f4f8;
+            --amarelo-destaque: #FFD100;
+            --verde-pcd: #2e7d32;
+            --verde-claro: #e8f5e9;
+            --cinza-texto: #555555;
+            --fundo: #f8fafc;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0; padding: 0; background-color: #f4f7f6; color: #333;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--fundo);
+            color: #333;
         }
+
+        /* ==========================================
+           ESTILOS DE TELA (CELULAR E PC)
+           ========================================== */
+        .screen-only { display: block; }
+        .print-only { display: none; } /* Esconde a tabela na tela */
+
         header {
-            background-color: var(--azul-sine); color: white;
-            padding: 20px; text-align: center;
-            border-bottom: 5px solid var(--amarelo-sine);
+            background: linear-gradient(135deg, var(--azul-principal), #0066cc);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--amarelo-destaque);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+
+        header h1 { margin: 0; font-size: 28px; letter-spacing: -0.5px; }
+        header p { margin: 10px 0 0 0; font-size: 16px; opacity: 0.9; }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .controles {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
         .busca {
-            width: 100%; padding: 12px; font-size: 16px;
-            border: 2px solid #ccc; border-radius: 8px;
-            margin-bottom: 20px; box-sizing: border-box;
+            flex: 1;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+            font-family: 'Inter', sans-serif;
         }
-        .vaga-card {
-            background: white; padding: 15px; margin-bottom: 15px;
-            border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            border-left: 5px solid var(--azul-sine);
+
+        .busca:focus { border-color: var(--azul-principal); }
+
+        .btn-imprimir {
+            background-color: var(--azul-principal);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .vaga-card h3 { margin: 0 0 10px 0; color: var(--azul-sine); }
-        .empresa { font-weight: bold; color: #555; font-size: 14px; }
-        .detalhes { display: flex; justify-content: space-between; margin-top: 10px; font-size: 14px;}
-        .tag-vagas { background-color: #e0f2f1; color: #006655; padding: 4px 8px; border-radius: 4px; font-weight: bold;}
-        .tag-pcd { background-color: #4CAF50; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px; margin-left: 10px;}
-        .data { color: #d32f2f; font-weight: bold; }
-        .footer { text-align: center; margin-top: 30px; font-size: 12px; color: #777; }
+
+        .btn-imprimir:hover { background-color: #003366; }
+
+        /* GRID DE CARDS */
+        .grid-vagas {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--azul-principal);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .card.pcd { border-left-color: var(--verde-pcd); background-color: #fcfffb;}
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .card h3 { margin: 0; color: var(--azul-principal); font-size: 18px; line-height: 1.3; }
+        .card.pcd h3 { color: var(--verde-pcd); }
+
+        .tag-pcd {
+            background-color: var(--verde-pcd);
+            color: white;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .empresa { color: var(--cinza-texto); font-weight: 600; font-size: 15px; margin-bottom: 15px; display: flex; align-items: center; gap: 6px;}
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 15px;
+        }
+
+        .vagas-badge {
+            background-color: var(--azul-claro);
+            color: var(--azul-principal);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .vencimento { font-size: 13px; color: #64748b; }
+        .vencimento strong { color: #ef4444; }
+
+        .rodape { text-align: center; padding: 30px; color: #94a3b8; font-size: 14px; }
+
+        /* ==========================================
+           ESTILOS DE IMPRESSÃO (A4)
+           ========================================== */
+        @media print {
+            @page { margin: 1cm; size: A4 portrait; }
+            body { background-color: white; font-family: Arial, sans-serif; }
+            
+            /* Esconde os elementos de tela */
+            .screen-only, header, .controles, .rodape { display: none !important; }
+            
+            /* Mostra a tabela de impressão */
+            .print-only { display: block !important; }
+
+            .print-header {
+                text-align: center;
+                margin-bottom: 20px;
+                border-bottom: 2px solid black;
+                padding-bottom: 10px;
+            }
+            .print-header h1 { font-size: 20px; margin: 0; color: black; }
+            .print-header p { font-size: 12px; margin: 5px 0 0 0; color: #333; }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 11px; /* Tamanho bom para caber bastante vaga */
+            }
+            th, td {
+                border: 1px solid #aaa;
+                padding: 6px 8px;
+                text-align: left;
+            }
+            th {
+                background-color: #eee !important;
+                -webkit-print-color-adjust: exact;
+                color: black;
+                font-weight: bold;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9 !important;
+                -webkit-print-color-adjust: exact;
+            }
+            .pcd-row td {
+                background-color: var(--verde-claro) !important;
+                -webkit-print-color-adjust: exact;
+            }
+            .center { text-align: center; }
+            .obs-print { font-size: 10px; text-align: center; margin-top: 15px; font-style: italic; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Painel de Vagas</h1>
-        <p>Atualizado diariamente. Procure sua oportunidade abaixo:</p>
+    <header class="screen-only">
+        <h1>Painel de Vagas - SINE</h1>
+        <p>Encontre a sua próxima oportunidade no mercado de trabalho</p>
     </header>
 
     <div class="container">
-        <input type="text" id="inputBusca" class="busca" placeholder="🔍 Buscar por cargo ou empresa...">
-        <div id="lista-vagas">Carregando vagas...</div>
-        <div class="footer" id="data-atualizacao"></div>
+        
+        <div class="controles screen-only">
+            <input type="text" id="inputBusca" class="busca" placeholder="🔍 Buscar vaga por cargo ou empresa...">
+            <button class="btn-imprimir" onclick="window.print()">🖨️ Imprimir Vagas</button>
+        </div>
+
+        <div id="grid-vagas" class="grid-vagas screen-only">
+            </div>
+
+        <div class="print-only">
+            <div class="print-header">
+                <h1>SINE - Relação Oficial de Vagas Abertas</h1>
+                <p id="print-data">Gerado automaticamente</p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 40%">Cargo / Ocupação</th>
+                        <th style="width: 10%" class="center">Vagas</th>
+                        <th style="width: 35%">Empresa</th>
+                        <th style="width: 15%" class="center">Válido até</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-print">
+                    </tbody>
+            </table>
+            <div class="obs-print">
+                * As vagas destacadas com [PCD] são destinadas exclusivamente a Pessoas com Deficiência (mediante laudo).<br>
+                Consulte um atendente para emissão de carta de encaminhamento.
+            </div>
+        </div>
+
+        <div class="rodape screen-only" id="data-atualizacao"></div>
     </div>
 
     <script>
         let vagasData = [];
+
+        // Data de hoje
+        const dataStr = new Date().toLocaleDateString('pt-BR');
+        document.getElementById('data-atualizacao').innerText = "Última atualização do sistema: " + dataStr;
+        document.getElementById('print-data').innerText = "Data de emissão do relatório: " + dataStr;
 
         // Busca o JSON gerado pelo Python
         fetch('vagas.json')
             .then(response => response.json())
             .then(data => {
                 vagasData = data;
-                renderizarVagas(vagasData);
-                document.getElementById('data-atualizacao').innerText = "Última atualização do sistema: " + new Date().toLocaleDateString('pt-BR');
+                renderizarInterface(vagasData);
             })
             .catch(error => {
-                document.getElementById('lista-vagas').innerHTML = "<p style='color:red;'>Erro ao carregar as vagas. Tente novamente mais tarde.</p>";
+                document.getElementById('grid-vagas').innerHTML = "<p style='color:red; text-align:center; grid-column: 1/-1;'>Erro ao carregar as vagas. Certifique-se de iniciar o servidor local.</p>";
             });
 
-        // Função para desenhar os cartões na tela
-        function renderizarVagas(vagas) {
-            const container = document.getElementById('lista-vagas');
-            container.innerHTML = '';
+        function renderizarInterface(vagas) {
+            const grid = document.getElementById('grid-vagas');
+            const tbody = document.getElementById('tbody-print');
+            
+            grid.innerHTML = '';
+            tbody.innerHTML = '';
 
             if (vagas.length === 0) {
-                container.innerHTML = '<p>Nenhuma vaga encontrada para esta busca.</p>';
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:#666;">Nenhuma vaga encontrada.</p>';
+                tbody.innerHTML = '<tr><td colspan="4" class="center">Nenhuma vaga encontrada.</td></tr>';
                 return;
             }
 
             vagas.forEach(vaga => {
-                const tagPcd = vaga.pcd ? `<span class="tag-pcd">♿ VAGA PCD</span>` : '';
+                const isPcd = vaga.pcd;
                 
-                const card = `
-                    <div class="vaga-card">
-                        <h3>${vaga.cargo} ${tagPcd}</h3>
+                // 1. Monta o Card para a Tela
+                const tagPcdHtml = isPcd ? `<span class="tag-pcd">♿ EXCLUSIVO PCD</span>` : '';
+                const cardClass = isPcd ? 'card pcd' : 'card';
+                
+                const cardHtml = `
+                    <div class="${cardClass}">
+                        <div class="card-header">
+                            <h3>${vaga.cargo}</h3>
+                            ${tagPcdHtml}
+                        </div>
                         <div class="empresa">🏢 ${vaga.empresa}</div>
-                        <div class="detalhes">
-                            <span class="tag-vagas">👥 ${vaga.qtd} Vaga(s)</span>
-                            <span>⏳ Válido até: <span class="data">${vaga.vencimento}</span></span>
+                        <div class="card-footer">
+                            <span class="vagas-badge">${vaga.qtd} vaga(s)</span>
+                            <span class="vencimento">Até <strong>${vaga.vencimento}</strong></span>
                         </div>
                     </div>
                 `;
-                container.innerHTML += card;
+                grid.innerHTML += cardHtml;
+
+                // 2. Monta a Linha para a Tabela de Impressão
+                const rowClass = isPcd ? 'pcd-row' : '';
+                const nomeCargoPrint = isPcd ? `<strong>${vaga.cargo} [PCD]</strong>` : vaga.cargo;
+
+                const rowHtml = `
+                    <tr class="${rowClass}">
+                        <td>${nomeCargoPrint}</td>
+                        <td class="center"><strong>${vaga.qtd}</strong></td>
+                        <td>${vaga.empresa}</td>
+                        <td class="center">${vaga.vencimento}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += rowHtml;
             });
         }
 
@@ -100,7 +328,7 @@
                 vaga.cargo.toLowerCase().includes(termo) || 
                 vaga.empresa.toLowerCase().includes(termo)
             );
-            renderizarVagas(vagasFiltradas);
+            renderizarInterface(vagasFiltradas);
         });
     </script>
 </body>

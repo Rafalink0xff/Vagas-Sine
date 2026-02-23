@@ -1,1 +1,219 @@
-[]
+[
+    {
+        "cargo": "AGENTE DE CARGA",
+        "empresa": "BIG ALIMENTOS",
+        "qtd": "9",
+        "vencimento": "02/03/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "ANALISTA DE MARKETING",
+        "empresa": "GILVAN SANTOS DE MOURA",
+        "qtd": "1",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "ANALISTA FINANCEIRO (INSTITUIÇÕES FINANCEIRAS)",
+        "empresa": "ELITE FORMACOES",
+        "qtd": "1",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "ASSISTENTE DE LOGÍSTICA DE TRANSPORTE",
+        "empresa": "TUPAN CONSTRUCOES",
+        "qtd": "5",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "ASSISTENTE DE VENDAS",
+        "empresa": "LOJAS RIACHUELO",
+        "qtd": "5",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "ASSISTENTE DE VENDAS",
+        "empresa": "ELITE FORMACOES",
+        "qtd": "2",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "ASSISTENTE DE VENDAS",
+        "empresa": "YAKULT",
+        "qtd": "2",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "AUXILIAR ADMINISTRATIVO",
+        "empresa": "PODIUM ENGENHARIA",
+        "qtd": "1",
+        "vencimento": "23/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "AUXILIAR ADMINISTRATIVO",
+        "empresa": "MEDRADIUS",
+        "qtd": "6",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "AUXILIAR DE LIMPEZA",
+        "empresa": "MEDRADIUS",
+        "qtd": "5",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "BARMAN",
+        "empresa": "VERO PASTA E VINO",
+        "qtd": "10",
+        "vencimento": "25/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "CALDEIREIRO MONTADOR",
+        "empresa": "CENTRINOX",
+        "qtd": "1",
+        "vencimento": "26/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "CHAPEIRO",
+        "empresa": "ROCK 80 BURGUER",
+        "qtd": "2",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "COMPRADOR",
+        "empresa": "FOX BRASIL",
+        "qtd": "1",
+        "vencimento": "25/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "CONTADOR",
+        "empresa": "GILVAN SANTOS DE MOURA",
+        "qtd": "1",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "COZINHEIRO GERAL",
+        "empresa": "VERO PASTA E VINO",
+        "qtd": "10",
+        "vencimento": "25/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "DESENVOLVEDOR DE TI",
+        "empresa": "ELITE FORMACOES",
+        "qtd": "1",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "GARÇOM",
+        "empresa": "VERO PASTA E VINO",
+        "qtd": "10",
+        "vencimento": "25/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "GERENTE DE PROJETOS DE TECNOLOGIA DA INFORMAÇÃO",
+        "empresa": "ELITE FORMACOES",
+        "qtd": "1",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "MECÂNICO DE REFRIGERAÇÃO E CLIMATIZAÇÃO",
+        "empresa": "MAC SERVICE",
+        "qtd": "1",
+        "vencimento": "26/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "MOTORISTA DE CAMINHÃO",
+        "empresa": "SOLAR COCA COLA",
+        "qtd": "10",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "MOTORISTA DE CAMINHÃO",
+        "empresa": "BIG ALIMENTOS",
+        "qtd": "9",
+        "vencimento": "02/03/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "OPERADOR DE EMPILHADEIRA",
+        "empresa": "TUPAN CONSTRUCOES",
+        "qtd": "5",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "OPERADOR DE EMPILHADEIRA",
+        "empresa": "SOLAR COCA COLA",
+        "qtd": "10",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "OPERADOR DE TELEMARKETING ATIVO E RECEPTIVO",
+        "empresa": "ALMAVIVA",
+        "qtd": "600",
+        "vencimento": "20/03/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "OPERADOR DE TELEMARKETING ATIVO E RECEPTIVO",
+        "empresa": "ALMAVIVA DO BRASIL",
+        "qtd": "250",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "PEDREIRO",
+        "empresa": "UNICA ENGENGARIA E EMPREENDIMENTOS IMOBILIARIOS",
+        "qtd": "10",
+        "vencimento": "25/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "POLIDOR DE METAIS",
+        "empresa": "CENTRINOX",
+        "qtd": "1",
+        "vencimento": "26/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "REPRESENTANTE COMERCIAL AUTÔNOMO",
+        "empresa": "FRANCA SOLUCOES LTDA",
+        "qtd": "50",
+        "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "SOLDADOR",
+        "empresa": "CENTRINOX",
+        "qtd": "1",
+        "vencimento": "26/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "TÉCNICO DE REFRIGERAÇÃO (INSTALAÇÃO)",
+        "empresa": "MAC SERVICE",
+        "qtd": "1",
+        "vencimento": "26/02/2026",
+        "pcd": false
+    }
+]
