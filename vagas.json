@@ -7,6 +7,13 @@
         "pcd": false
     },
     {
+        "cargo": "AGENTE DE PÁTIO",
+        "empresa": "PRISMA PARTICIPACOES LTDA.",
+        "qtd": "5",
+        "vencimento": "13/03/2026",
+        "pcd": false
+    },
+    {
         "cargo": "ANALISTA DE MARKETING",
         "empresa": "GILVAN SANTOS DE MOURA",
         "qtd": "1",
@@ -50,13 +57,6 @@
     },
     {
         "cargo": "AUXILIAR ADMINISTRATIVO",
-        "empresa": "PODIUM ENGENHARIA",
-        "qtd": "1",
-        "vencimento": "23/02/2026",
-        "pcd": false
-    },
-    {
-        "cargo": "AUXILIAR ADMINISTRATIVO",
         "empresa": "MEDRADIUS",
         "qtd": "6",
         "vencimento": "27/02/2026",
@@ -67,6 +67,20 @@
         "empresa": "MEDRADIUS",
         "qtd": "5",
         "vencimento": "27/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "AÇOUGUEIRO",
+        "empresa": "BISTEKAS CASA DE CARNES",
+        "qtd": "3",
+        "vencimento": "02/03/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "BALCONISTA DE AÇOUGUE",
+        "empresa": "BISTEKAS CASA DE CARNES",
+        "qtd": "3",
+        "vencimento": "02/03/2026",
         "pcd": false
     },
     {
@@ -169,23 +183,16 @@
     },
     {
         "cargo": "OPERADOR DE TELEMARKETING ATIVO E RECEPTIVO",
-        "empresa": "ALMAVIVA",
-        "qtd": "600",
-        "vencimento": "20/03/2026",
-        "pcd": false
-    },
-    {
-        "cargo": "OPERADOR DE TELEMARKETING ATIVO E RECEPTIVO",
         "empresa": "ALMAVIVA DO BRASIL",
         "qtd": "250",
         "vencimento": "27/02/2026",
         "pcd": false
     },
     {
-        "cargo": "PEDREIRO",
-        "empresa": "UNICA ENGENGARIA E EMPREENDIMENTOS IMOBILIARIOS",
-        "qtd": "10",
-        "vencimento": "25/02/2026",
+        "cargo": "OPERADOR DE TELEMARKETING ATIVO E RECEPTIVO",
+        "empresa": "ALMAVIVA",
+        "qtd": "600",
+        "vencimento": "20/03/2026",
         "pcd": false
     },
     {
@@ -214,6 +221,13 @@
         "empresa": "MAC SERVICE",
         "qtd": "1",
         "vencimento": "26/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "VENDEDOR INTERNO",
+        "empresa": "AUTOVEL SEMINOVOS",
+        "qtd": "4",
+        "vencimento": "09/03/2026",
         "pcd": false
     }
 ]
