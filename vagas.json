@@ -1,5 +1,12 @@
 [
     {
+        "cargo": "ADESIVADOR",
+        "empresa": "DIGITAL COMUNICACAO VISUAL",
+        "qtd": "2",
+        "vencimento": "03/03/2026",
+        "pcd": false
+    },
+    {
         "cargo": "AGENTE DE CARGA",
         "empresa": "BIG ALIMENTOS",
         "qtd": "9",
@@ -56,20 +63,6 @@
         "pcd": false
     },
     {
-        "cargo": "AUXILIAR ADMINISTRATIVO",
-        "empresa": "MEDRADIUS",
-        "qtd": "6",
-        "vencimento": "27/02/2026",
-        "pcd": false
-    },
-    {
-        "cargo": "AUXILIAR DE LIMPEZA",
-        "empresa": "MEDRADIUS",
-        "qtd": "5",
-        "vencimento": "27/02/2026",
-        "pcd": false
-    },
-    {
         "cargo": "AÇOUGUEIRO",
         "empresa": "BISTEKAS CASA DE CARNES",
         "qtd": "3",
@@ -102,13 +95,6 @@
         "empresa": "ROCK 80 BURGUER",
         "qtd": "2",
         "vencimento": "27/02/2026",
-        "pcd": false
-    },
-    {
-        "cargo": "COMPRADOR",
-        "empresa": "FOX BRASIL",
-        "qtd": "1",
-        "vencimento": "25/02/2026",
         "pcd": false
     },
     {
@@ -147,17 +133,17 @@
         "pcd": false
     },
     {
+        "cargo": "INSTALADOR-REPARADOR DE REDES E CABOS TELEFÔNICOS",
+        "empresa": "PINGUIM NET",
+        "qtd": "2",
+        "vencimento": "20/03/2026",
+        "pcd": false
+    },
+    {
         "cargo": "MECÂNICO DE REFRIGERAÇÃO E CLIMATIZAÇÃO",
         "empresa": "MAC SERVICE",
         "qtd": "1",
         "vencimento": "26/02/2026",
-        "pcd": false
-    },
-    {
-        "cargo": "MOTORISTA DE CAMINHÃO",
-        "empresa": "SOLAR COCA COLA",
-        "qtd": "10",
-        "vencimento": "27/02/2026",
         "pcd": false
     },
     {
@@ -221,13 +207,6 @@
         "empresa": "MAC SERVICE",
         "qtd": "1",
         "vencimento": "26/02/2026",
-        "pcd": false
-    },
-    {
-        "cargo": "VENDEDOR INTERNO",
-        "empresa": "AUTOVEL SEMINOVOS",
-        "qtd": "4",
-        "vencimento": "09/03/2026",
         "pcd": false
     }
 ]
