@@ -63,6 +63,20 @@
         "pcd": false
     },
     {
+        "cargo": "AUXILIAR DE COZINHA",
+        "empresa": "VERO PASTA E VINO",
+        "qtd": "10",
+        "vencimento": "15/03/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "AUXILIAR DE LOGÍSTICA",
+        "empresa": "TUPAN CONSTRUCOES",
+        "qtd": "10",
+        "vencimento": "15/03/2026",
+        "pcd": false
+    },
+    {
         "cargo": "AÇOUGUEIRO",
         "empresa": "BISTEKAS CASA DE CARNES",
         "qtd": "3",
@@ -74,13 +88,6 @@
         "empresa": "BISTEKAS CASA DE CARNES",
         "qtd": "3",
         "vencimento": "02/03/2026",
-        "pcd": false
-    },
-    {
-        "cargo": "BARMAN",
-        "empresa": "VERO PASTA E VINO",
-        "qtd": "10",
-        "vencimento": "25/02/2026",
         "pcd": false
     },
     {
@@ -105,13 +112,6 @@
         "pcd": false
     },
     {
-        "cargo": "COZINHEIRO GERAL",
-        "empresa": "VERO PASTA E VINO",
-        "qtd": "10",
-        "vencimento": "25/02/2026",
-        "pcd": false
-    },
-    {
         "cargo": "DESENVOLVEDOR DE TI",
         "empresa": "ELITE FORMACOES",
         "qtd": "1",
@@ -119,10 +119,17 @@
         "pcd": false
     },
     {
-        "cargo": "GARÇOM",
-        "empresa": "VERO PASTA E VINO",
-        "qtd": "10",
-        "vencimento": "25/02/2026",
+        "cargo": "ELETRICISTA DE INSTALAÇÕES",
+        "empresa": "CONSTRUTORA VIANA BARROS",
+        "qtd": "1",
+        "vencimento": "15/03/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "ENCANADOR",
+        "empresa": "CONSTRUTORA VIANA BARROS",
+        "qtd": "1",
+        "vencimento": "15/03/2026",
         "pcd": false
     },
     {
@@ -182,6 +189,20 @@
         "pcd": false
     },
     {
+        "cargo": "PEDREIRO",
+        "empresa": "CONSTRUTORA VIANA BARROS",
+        "qtd": "1",
+        "vencimento": "15/03/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "PINTOR DE OBRAS",
+        "empresa": "CONSTRUTORA VIANA BARROS",
+        "qtd": "1",
+        "vencimento": "15/03/2026",
+        "pcd": false
+    },
+    {
         "cargo": "POLIDOR DE METAIS",
         "empresa": "CENTRINOX",
         "qtd": "1",
@@ -207,6 +228,27 @@
         "empresa": "MAC SERVICE",
         "qtd": "1",
         "vencimento": "26/02/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "VENDEDOR INTERNO",
+        "empresa": "JOTERPI",
+        "qtd": "10",
+        "vencimento": "10/03/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "VENDEDOR INTERNO",
+        "empresa": "TUPAN CONSTRUCOES",
+        "qtd": "10",
+        "vencimento": "15/03/2026",
+        "pcd": false
+    },
+    {
+        "cargo": "VENDEDOR PRACISTA",
+        "empresa": "PREMIUM DISTRIBUIDOR",
+        "qtd": "3",
+        "vencimento": "15/03/2026",
         "pcd": false
     }
 ]
